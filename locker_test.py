@@ -90,7 +90,7 @@ class TestUser(unittest.TestCase,User):
 
     def test_display_all_users(self):
         '''
-        method that returns a list of all users saved
+        test to check that a list of all users saved is returned.
         '''
         self.assertEqual(User.display_users(), User.user_list)
 

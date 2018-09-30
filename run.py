@@ -140,16 +140,15 @@ def outputPassword(passwordString) :
 
 
 # Main Function
-
 def main():
-    print("Hello Welcome to The Password Locker. What is your name?")
+    print("Hello! Welcome to The Password Locker. What is your name?")
     user_name = input()
 
     print(f"Hello {user_name}. What would you like to do?")
-    print('/n')
+    print('\n')
 
     while True:
-        print("Use these short codes : cc - create a new user, dc - display users, fc - find a user, rm - remove a user, ex - exit the password locker. For choices use: y - yes, n - no")
+        print("Use these short codes : cc - create a new user , ca - create a new account, dc - display users, da - display accounts, fc - find a user, rm - remove a user, For choices use: y - yes, n - no, ex - exit the password locker.")
 
         short_code = input().lower()
 
@@ -158,6 +157,7 @@ def main():
             
             print("New User")
             print("-"*10)
+            print('\n')
 
             print("First name ....")
             f_name = input()
@@ -171,13 +171,49 @@ def main():
             print("Email address....")
             e_address = input()
 
-            
             save_users(create_user(f_name,l_name,p_number,e_address)) # create and save new user.
             print('\n')
-            print(f"New User {f_name} {l_name} created")
+
+            print("New Account")
+            print("-"*13)
+            print('\n')
+
+            print("Account name ....")
+            account_name = input()
+
+            print("Generate a password for your account....")
+            generate_password() # generates the password
+
+            print("Input your new account password...")
+            account_password = input()
+    
+            save_accounts(create_account(account_name, account_password)) # create and save new account.
+            print('\n')
+            print(f"New {account_name} account created by {f_name} {l_name} ")
             print('\n')
 
 
+        elif short_code == 'ca':
+
+            print("New Account")
+            print("-"*13)
+            print('\n')
+
+            print("Account name ....")
+            account_name = input()
+
+            print("Generate a password for your account....")
+            generate_password() # generates the password
+
+            print("Input your new account password...")
+            account_password = input()
+    
+            save_accounts(create_account(account_name, account_password)) # create and save new account.
+            print('\n')
+            print(f"New {account_name} account created by {f_name} {l_name} ")
+            print('\n')
+             
+        
         elif short_code == 'dc':
             
             if display_users():
@@ -194,7 +230,23 @@ def main():
                 print("You dont seem to have any users saved yet")
                 print('\n')
 
+        elif short_code == 'da':
+            
+            if display_accounts():
+                print("Here is a list of all your accounts")
+                print('\n')
 
+                for account in display_accounts():
+                    print(f"{account.account_name}")
+
+                print('\n')
+            
+            else:
+                print('\n')
+                print("You dont seem to have any accounts saved yet")
+                print('\n')
+
+        
         elif short_code == 'fc':
             
             print("Enter the number you want to search for")
@@ -210,7 +262,7 @@ def main():
             else:
                 print("That user does not exist")
 
-
+        
         elif short_code == 'rm':
             
             
@@ -223,11 +275,11 @@ def main():
                 print(f"Do you want to delete {search_user.first_name} {search_user.last_name} ?")
                 print('\n')
                 print(f"If yes input y. If no input n")
-                print('\n')
 
                 choice = input().lower()
                 if choice == 'y':
                     del_user(search_user)
+                    del_account(account)
                     print(f"User has been deleted")
 
                 elif choice == 'n':
@@ -239,11 +291,12 @@ def main():
             else:
                 print("That user does not exist") 
                 
-
+        
         elif short_code == "ex":
-            print("Bye .......")
+            print("Thank you for using Password Locker. Bye!")
             break
 
+        
         else:
             print("I really didn't get that. Please use the short codes")
             

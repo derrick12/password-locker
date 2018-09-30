@@ -81,7 +81,65 @@ def display_accounts():
     return Credentials.display_accounts()
 
 
+# Password Generator
 
+def user_input() :
+    """
+    Asks user what length of password to create.
+    """
+
+    userLength=0
+
+    try : 
+        userLength = int(input('How many characters would you like in your password? '))
+
+    except :
+        print('\nSorry there was an error')
+        print('Please try again...')
+
+        try : 
+            userLength = int(input('\nHow many characters would you like in your password? '))
+        except : 
+
+            print('Sorry, there was an error')
+            input('Press any key to exit')
+            sys.exit()
+                       
+    return(userLength)
+
+
+def generate_password() : 
+    """
+    Generate random characters to form the password.
+    """
+
+    charSets = [
+        'abcdefghijklmnopqrstuvwxyz',
+        'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+        '0123456789',
+        '^!\$%&/()=?{[]}+~#-_.:,;<>|\\',
+        ]
+
+    length = user_input()
+    pwd = []
+    charset = choice(charSets)
+
+    while len(pwd) < length :
+
+        pwd.append(choice(charset))
+        charset = choice(list(set(charSets) - set([charset])))
+
+    return outputPassword("".join(pwd))
+        
+
+def outputPassword(passwordString) :
+    """
+    Output password to user.
+    """
+    print('This is your generated password: {0}\n'.format(passwordString))
+
+
+# Main Function
 
 def main():
     print("Hello Welcome to The Password Locker. What is your name?")

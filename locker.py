@@ -72,5 +72,21 @@ class User:
         '''
         return cls.user_list
 
+class Credentials:
+    '''
+    Class that generates new instance of accounts
+    '''
+    account_list = []  # Class variable
 
+    def __init__(self, account_name, account_password):        
+        """
+        __init__ method that helps us define properties for our objects
+
+        Args:
+        account_name: New account name.
+        """
+
+        # Instance variables
+        self.account_name = account_name
+        self.account_password = account_password
 

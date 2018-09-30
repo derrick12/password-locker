@@ -98,6 +98,21 @@ class TestUser(unittest.TestCase,User,Credentials):
         self.new_user.delete_user()# Deleting a user object
         self.assertEqual(len(User.user_list),1)
 
+    def test_delete_account(self):
+        '''
+        test_delete_account to test if we can remove an account from our account list 
+        '''
+
+        self.new_account.save_account()
+        test_account = Credentials("Test","account12") # new account
+        test_account.save_account()
+
+        self.new_account.delete_account()# Deleting a account object
+        self.assertEqual(len(Credentials.account_list),1)
+
+
+
+
     def test_find_user_by_number(self):
         '''
         test to check if we can find a user by phone number and display information

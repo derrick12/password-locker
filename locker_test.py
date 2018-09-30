@@ -138,11 +138,22 @@ class TestUser(unittest.TestCase,User,Credentials):
         user_exists = User.user_exist("0711223344")
         self.assertTrue(user_exists)
 
+
+
     def test_display_all_users(self):
         '''
         test to check that a list of all users saved is returned.
         '''
         self.assertEqual(User.display_users(), User.user_list)
+
+    def test_display_all_accounts(self):
+        '''
+        test to check that a list of all accounts saved is returned.
+        '''
+        self.assertEqual(Credentials.display_accounts(), Credentials.account_list)
+
+
+
 
 
 if __name__ == '__main__':

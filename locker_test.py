@@ -1,10 +1,11 @@
 import unittest # Importing the unittest module
 from locker import User # Importing the user class
+from locker import Credentials # Importing the credentials
 
-class TestUser(unittest.TestCase,User):
+class TestUser(unittest.TestCase,User,Credentials):
     
     '''
-    This is test class that defines test cases for the user class behaviours
+    This is test class that defines test cases for the user and credentials class behaviours
 
     Args:
         unittest.TestCase: TestCase class that helps in creating test cases
@@ -15,12 +16,14 @@ class TestUser(unittest.TestCase,User):
         Set Up method to run before each test cases.
         '''
         self.new_user = User("Derrick","Kariuki","0718016066","derrickwaweru@gmail.com") # creates user object
+        self.new_account = Credentials("Instagram","dero1234") # creates credentials object
 
     def tearDown(self):
         '''
         tearDown method that cleans up after each test case has run
         '''
         User.user_list = []
+        Credentials.account_list = []
 
 
     def test_init(self):
@@ -31,6 +34,12 @@ class TestUser(unittest.TestCase,User):
         self.assertEqual(self.new_user.last_name,"Kariuki")
         self.assertEqual(self.new_user.phone_number,"0718016066")
         self.assertEqual(self.new_user.email,"derrickwaweru@gmail.com")
+
+        self.assertEqual(self.new_account.account_name,"Instagram")
+        self.assertEqual(self.new_account.account_password,"dero1234")
+
+
+
 
 
     def test_save_user(self):
@@ -93,8 +102,6 @@ class TestUser(unittest.TestCase,User):
         test to check that a list of all users saved is returned.
         '''
         self.assertEqual(User.display_users(), User.user_list)
-
-
 
 
 if __name__ == '__main__':

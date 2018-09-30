@@ -1,14 +1,29 @@
 #!/usr/bin/env python3.6
 from locker import User
+from locker import Credentials
 
-# Defining the functions
+from os import urandom
+from random import choice
+import math
+import sys
+
+# Defining User and Credentials functions
 
 def create_user(fname,lname,phone,email):
     '''
-    Function to create a new user
+    Function to create a new user with an account 
     '''
     new_user = User(fname,lname,phone,email)
     return new_user
+
+def create_account(account_name,account_password):
+    '''
+    Function to create a new account 
+    '''
+    new_account = Credentials(account_name,account_password)
+    return new_account
+
+
 
 def save_users(user):
     '''
@@ -16,11 +31,27 @@ def save_users(user):
     '''
     user.save_user()
 
+def save_accounts(account):
+    '''
+    Function to save account
+    '''
+    account.save_account()
+
+
+
 def del_user(user):
     '''
     Function to delete a user
     '''
     user.delete_user()
+
+def del_account(account):
+    '''
+    Function to delete an account
+    '''
+    account.delete_account()
+
+
 
 def find_user(number):
     '''
@@ -28,17 +59,28 @@ def find_user(number):
     '''
     return User.find_by_number(number)
 
+
 def check_existing_users(number):
     '''
     Function that check if a user exists with that number and return a Boolean
     '''
     return User.user_exist(number)
 
+
+
 def display_users():
     '''
     Function that returns all the saved users
     '''
     return User.display_users()
+
+def display_accounts():
+    '''
+    Function that returns all the saved accounts
+    '''
+    return Credentials.display_accounts()
+
+
 
 
 def main():

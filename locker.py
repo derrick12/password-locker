@@ -103,7 +103,6 @@ class Credentials:
 
         Credentials.account_list.remove(self)
 
-
     @classmethod
     def display_accounts(cls):
         '''

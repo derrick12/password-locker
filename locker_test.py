@@ -40,8 +40,6 @@ class TestUser(unittest.TestCase,User,Credentials):
 
 
 
-
-
     def test_save_user(self):
         '''
         test_save_user test case tests whether the user object is saved in the user list
@@ -57,8 +55,6 @@ class TestUser(unittest.TestCase,User,Credentials):
 
         self.new_account.save_account() # saving the new account
         self.assertEqual(len(Credentials.account_list),1)
-
-
 
 
 
@@ -81,8 +77,6 @@ class TestUser(unittest.TestCase,User,Credentials):
         test_account = Credentials("Test","account12") # the new account
         test_account.save_account()
         self.assertEqual(len(Credentials.account_list),2)
-
-
 
 
 
@@ -151,8 +145,6 @@ class TestUser(unittest.TestCase,User,Credentials):
         test to check that a list of all accounts saved is returned.
         '''
         self.assertEqual(Credentials.display_accounts(), Credentials.account_list)
-
-
 
 
 

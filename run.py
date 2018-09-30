@@ -266,7 +266,7 @@ def main():
         elif short_code == 'rm':
             
             
-            print("Enter the number you want to delete")
+            print("Enter the number the number of user you want to delete")
 
             delete_number = input()
             if check_existing_users(delete_number):
